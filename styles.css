@@ -1,0 +1,55 @@
+body {
+    font-family: Arial, sans-serif;
+}
+.container {
+    display: flex;
+    justify-content: space-between;
+    padding: 20px;
+}
+.input-section, .list-section {
+    width: 45%;
+}
+input, button {
+    margin: 5px 0;
+    padding: 10px;
+    font-size: 16px;
+}
+ul {
+    list-style-type: none;
+    padding: 0;
+}
+li {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 10px;
+    margin: 5px 0;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+}
+.task-text {
+    flex-grow: 1;
+    margin-right: 20px;
+}
+.deadline-text {
+    margin-right: 20px;
+}
+.complete-btn {
+    padding: 5px 10px;
+    font-size: 12px;
+    margin-left: 10px;
+}
+.orange {
+    color: orange;
+}
+.red {
+    color: red;
+}
+.black {
+    color: black;
+}
+.title {
+    text-align: left;
+    margin: 20px;
+    font-size: 24px;
+}
