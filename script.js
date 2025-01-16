@@ -19,10 +19,10 @@ document.getElementById("addTaskBtn").addEventListener("click", function() {
         listItem.appendChild(taskText);
         listItem.appendChild(deadlineText);
         const timeDiff = deadline - now;
-        const threeDays = 3 * 24 * 60 * 60 * 1000;
+        const fourDays = 4 * 24 * 60 * 60 * 1000;
         if (timeDiff < 0) {
             listItem.classList.add("red");
-        } else if (timeDiff <= threeDays) {
+        } else if (timeDiff <= fourDays) {
             listItem.classList.add("orange");
         } else {
             listItem.classList.add("black");
@@ -39,7 +39,6 @@ document.getElementById("addTaskBtn").addEventListener("click", function() {
         deadlineInput.value = "";
     }
 });
-
 document.getElementById("saveTasksBtn").addEventListener("click", function() {
     const taskList = document.getElementById("taskList");
     const tasks = [];
@@ -50,7 +49,6 @@ document.getElementById("saveTasksBtn").addEventListener("click", function() {
     });
     localStorage.setItem("tasks", JSON.stringify(tasks));
 });
-
 document.getElementById("loadTasksBtn").addEventListener("click", function() {
     const taskList = document.getElementById("taskList");
     taskList.innerHTML = "";
@@ -67,19 +65,18 @@ document.getElementById("loadTasksBtn").addEventListener("click", function() {
             listItem.appendChild(taskText);
             listItem.appendChild(deadlineText);
             
-            
+            // Add color coding based on deadline
             const deadline = new Date(task.deadline);
             const now = new Date();
             const timeDiff = deadline - now;
-            const threeDays = 3 * 24 * 60 * 60 * 1000;
+            const fourDays = 4 * 24 * 60 * 60 * 1000;
             if (timeDiff < 0) {
                 listItem.classList.add("red");
-            } else if (timeDiff <= threeDays) {
+            } else if (timeDiff <= fourDays) {
                 listItem.classList.add("orange");
             } else {
                 listItem.classList.add("black");
             }
-
             const completeBtn = document.createElement("button");
             completeBtn.textContent = "完了";
             completeBtn.classList.add("complete-btn");
@@ -91,22 +88,18 @@ document.getElementById("loadTasksBtn").addEventListener("click", function() {
         });
     }
 });
-
 document.getElementById("clearTasksBtn").addEventListener("click", function() {
     localStorage.removeItem("tasks");
     document.getElementById("taskList").innerHTML = "";
 });
-
 document.getElementById("sortTasksBtn").addEventListener("click", function() {
     const taskList = document.getElementById("taskList");
     const tasks = Array.from(taskList.querySelectorAll("li"));
-
     tasks.sort((a, b) => {
         const deadlineA = new Date(a.querySelector(".deadline-text").textContent);
         const deadlineB = new Date(b.querySelector(".deadline-text").textContent);
         return deadlineA - deadlineB;
     });
-
     taskList.innerHTML = "";
     tasks.forEach(task => taskList.appendChild(task));
 });
