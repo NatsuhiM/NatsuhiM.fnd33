@@ -65,7 +65,7 @@ document.getElementById("loadTasksBtn").addEventListener("click", function() {
             listItem.appendChild(taskText);
             listItem.appendChild(deadlineText);
             
-            // Add color coding based on deadline
+           
             const deadline = new Date(task.deadline);
             const now = new Date();
             const timeDiff = deadline - now;
